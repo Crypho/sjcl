@@ -55,7 +55,7 @@
       plaintext = sjcl.codec.utf8String.toBits(plaintext);
     }
     if (typeof adata === "string") {
-      p.adata = adata = sjcl.codec.utf8String.toBits(adata);
+      adata = sjcl.codec.utf8String.toBits(adata);
     }
     prp = new sjcl.cipher[p.cipher](password);
 
@@ -219,7 +219,7 @@
       if (m[3] != null) {
         out[m[2]] = parseInt(m[3],10);
       } else if (m[4] != null) {
-        out[m[2]] = m[2].match(/^(ct|adata|salt|iv)$/) ? sjcl.codec.base64.toBits(m[4]) : unescape(m[4]);
+        out[m[2]] = m[2].match(/^(ct|salt|iv)$/) ? sjcl.codec.base64.toBits(m[4]) : unescape(m[4]);
       } else if (m[5] != null) {
         out[m[2]] = m[5] === 'true';
       }
